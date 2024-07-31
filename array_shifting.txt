@@ -1,0 +1,80 @@
+# include <stdio.h>
+# include <stdlib.h>
+
+void main() {
+    //defining array and its size
+    printf("Enter array size:\n");
+    int n=0;
+    scanf("%d", &n);
+
+    //input of array elements
+    int x[n];
+    printf("Enter array elements:\n");
+    for(int i=0; i<n; i++) {
+        scanf("%d", &x[i]);
+    }
+    printf("\n");
+
+    int z;
+
+    while(z != 3) {
+        //presenting choice of shifting
+        printf("\nEnter:\n'0'\tfor original array\n'1'\tfor linear left shift\n'2'\tfor linear right shift\n'3'\tfor exit\n\>>> ");
+        scanf("%d", &z);
+
+        int sft=0;
+
+        //switching to the snippet per choice given
+        switch(z) {
+            case 0://original
+                printf("|| Your original array ||\n: ");
+                for(int i=0; i<n; i++) {
+                    printf("%d ", x[i]);
+                }
+                printf("\n");
+                break;
+
+            case 1://left shift
+                printf("shift left by how much?\n");
+                scanf("%d", &sft);
+                while(sft>=n) {
+                    printf("enter a valid number (less than array size)!\n");
+                    scanf("%d", &sft);
+                }
+
+                printf("|| Your array shifted left ||\n:");
+                for(int i=0; i<n-sft; i++){
+                    printf("%d ", x[i+sft]);
+                }
+                printf("\n");
+                break;
+
+            case 2://right shift
+                printf("shift right by how much?\n");
+                scanf("%d", &sft);
+                while(sft>=n) {
+                    printf("enter a valid number (less than array size)!\n");
+                    scanf("%d", &sft);
+                }
+
+                printf("|| Your array shifted right ||\n:");
+                for(int s=0; s<sft; s++) { //printing space to illustrate shift
+                    printf("0 ");
+                }
+
+                for(int i=0; i<n-sft; i++) {
+                    printf("%d ", x[i]);
+                }
+                printf("\n");
+                break;
+
+            case 3://exit
+                printf("Exiting!\n\n");
+                exit(0);
+                break;
+
+            default:
+                printf("invalid.\n\n");
+        }
+    }
+}
